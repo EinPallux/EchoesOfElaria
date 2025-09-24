@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echoes of Elaria</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen active">
+        <div class="loading-content">
+            <h1>Echoes of Elaria</h1>
+            <div class="loading-spinner"></div>
+            <p>Loading your adventure...</p>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen">
+        <div class="menu-content">
+            <h1>Echoes of Elaria</h1>
+            <div class="menu-buttons">
+                <button id="new-game-btn" class="menu-btn primary">Start New Run</button>
+                <button id="continue-btn" class="menu-btn" disabled>Continue Run</button>
+                <button id="hub-btn" class="menu-btn">Visit Hub</button>
+                <button id="settings-btn" class="menu-btn">Settings</button>
+            </div>
+            <div class="meta-progress">
+                <div class="echoes-display">
+                    <span class="currency-icon">✦</span>
+                    <span id="echoes-count">0</span> Echoes
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hub Screen -->
+    <div id="hub-screen" class="screen">
+        <div class="hub-header">
+            <h2>Your Fortress</h2>
+            <div class="hub-resources">
+                <span class="currency-icon">✦</span>
+                <span id="hub-echoes">0</span> Echoes
+            </div>
+            <button id="hub-back-btn" class="back-btn">← Back to Menu</button>
+        </div>
+        
+        <div class="hub-buildings">
+            <div class="building" id="forge-building">
+                <div class="building-icon">⚒️</div>
+                <h3>Forge</h3>
+                <p>Level <span id="forge-level">1</span></p>
+                <button class="building-btn" id="forge-btn">Enter</button>
+                <button class="upgrade-btn" id="forge-upgrade-btn">Upgrade (100 ✦)</button>
+            </div>
+            
+            <div class="building" id="library-building">
+                <div class="building-icon">📚</div>
+                <h3>Library</h3>
+                <p>Level <span id="library-level">1</span></p>
+                <button class="building-btn" id="library-btn">Enter</button>
+                <button class="upgrade-btn" id="library-upgrade-btn">Upgrade (150 ✦)</button>
+            </div>
+            
+            <div class="building" id="altar-building">
+                <div class="building-icon">⛪</div>
+                <h3>Altar</h3>
+                <p>Level <span id="altar-level">1</span></p>
+                <button class="building-btn" id="altar-btn">Enter</button>
+                <button class="upgrade-btn" id="altar-upgrade-btn">Upgrade (200 ✦)</button>
+            </div>
+            
+            <div class="building" id="faction-building">
+                <div class="building-icon">🏛️</div>
+                <h3>Faction Hall</h3>
+                <p>Level <span id="faction-level">1</span></p>
+                <button class="building-btn" id="faction-btn">Enter</button>
+                <button class="upgrade-btn" id="faction-upgrade-btn">Upgrade (250 ✦)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Creation Screen -->
+    <div id="character-creation" class="screen">
+        <div class="creation-header">
+            <h2>Choose Your Path</h2>
+            <button id="char-back-btn" class="back-btn">← Back</button>
+        </div>
+        
+        <div class="class-selection">
+            <div class="class-card" data-class="warrior">
+                <div class="class-icon">⚔️</div>
+                <h3>Warrior</h3>
+                <p>Master of melee combat and defense</p>
+                <ul class="class-stats">
+                    <li>High Strength & Vitality</li>
+                    <li>Tanky frontline fighter</li>
+                    <li>Shield and sword mastery</li>
+                </ul>
+            </div>
+            
+            <div class="class-card" data-class="mage">
+                <div class="class-icon">🔮</div>
+                <h3>Mage</h3>
+                <p>Wielder of elemental magic</p>
+                <ul class="class-stats">
+                    <li>High Intelligence</li>
+                    <li>Powerful ranged spells</li>
+                    <li>Elemental mastery</li>
+                </ul>
+            </div>
+            
+            <div class="class-card" data-class="rogue">
+                <div class="class-icon">🗡️</div>
+                <h3>Rogue</h3>
+                <p>Swift assassin and scout</p>
+                <ul class="class-stats">
+                    <li>High Agility</li>
+                    <li>Critical hit specialist</li>
+                    <li>Stealth and poison</li>
+                </ul>
+            </div>
+            
+            <div class="class-card" data-class="healer">
+                <div class="class-icon">✨</div>
+                <h3>Healer</h3>
+                <p>Support and restoration expert</p>
+                <ul class="class-stats">
+                    <li>Balanced stats</li>
+                    <li>Healing and buffs</li>
+                    <li>Team support focus</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="faction-selection">
+            <h3>Choose Your Faction</h3>
+            <div class="faction-cards">
+                <div class="faction-card" data-faction="order">
+                    <h4>Order of Light</h4>
+                    <p>Bonus healing and defense</p>
+                </div>
+                <div class="faction-card" data-faction="shadow">
+                    <h4>Shadow Guild</h4>
+                    <p>Bonus critical hits and stealth</p>
+                </div>
+                <div class="faction-card" data-faction="nature">
+                    <h4>Nature's Circle</h4>
+                    <p>Bonus resources and regeneration</p>
+                </div>
+            </div>
+        </div>
+        
+        <button id="start-run-btn" class="menu-btn primary" disabled>Begin Adventure</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <!-- Map View -->
+        <div id="map-view" class="game-view active">
+            <div class="map-header">
+                <div class="character-info">
+                    <span id="char-name">Hero</span> - Level <span id="char-level">1</span>
+                    <div class="char-class" id="char-class-display">Warrior</div>
+                </div>
+                <div class="run-info">
+                    <span>Region: <span id="current-region">Forest</span></span>
+                    <button id="map-menu-btn" class="menu-btn small">Menu</button>
+                </div>
+            </div>
+            
+            <div class="map-container" id="map-container">
+                <!-- Map nodes will be generated here -->
+            </div>
+        </div>
+
+        <!-- Combat View -->
+        <div id="combat-view" class="game-view">
+            <div class="combat-header">
+                <button id="combat-flee-btn" class="danger-btn">Flee</button>
+                <div id="combat-turn-indicator">Your Turn</div>
+            </div>
+            
+            <div class="combat-area">
+                <div class="enemy-section">
+                    <div id="enemy-sprite" class="sprite"></div>
+                    <div class="enemy-info">
+                        <h3 id="enemy-name">Goblin</h3>
+                        <div class="health-bar">
+                            <div id="enemy-hp-bar" class="hp-fill"></div>
+                        </div>
+                        <span id="enemy-hp-text">100/100</span>
+                    </div>
+                </div>
+                
+                <div class="player-section">
+                    <div id="player-sprite" class="sprite"></div>
+                    <div class="player-info">
+                        <h3 id="combat-char-name">Hero</h3>
+                        <div class="health-bar">
+                            <div id="player-hp-bar" class="hp-fill"></div>
+                        </div>
+                        <span id="player-hp-text">100/100</span>
+                        <div class="mana-bar">
+                            <div id="player-mp-bar" class="mp-fill"></div>
+                        </div>
+                        <span id="player-mp-text">50/50</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="combat-actions">
+                <div class="skill-buttons" id="skill-buttons">
+                    <!-- Skill buttons will be generated here -->
+                </div>
+            </div>
+            
+            <div class="combat-log" id="combat-log">
+                <!-- Combat messages will appear here -->
+            </div>
+        </div>
+
+        <!-- Event View -->
+        <div id="event-view" class="game-view">
+            <div class="event-content">
+                <h2 id="event-title">A Strange Encounter</h2>
+                <div id="event-description">
+                    <p>You come across something interesting...</p>
+                </div>
+                <div class="event-image" id="event-image"></div>
+                <div class="event-choices" id="event-choices">
+                    <!-- Event choice buttons will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory View -->
+        <div id="inventory-view" class="game-view">
+            <div class="inventory-header">
+                <h2>Inventory</h2>
+                <button id="inventory-close-btn" class="close-btn">×</button>
+            </div>
+            
+            <div class="inventory-content">
+                <div class="inventory-grid" id="inventory-grid">
+                    <!-- Inventory items will be displayed here -->
+                </div>
+                
+                <div class="character-stats">
+                    <h3>Character Stats</h3>
+                    <div class="stat-line">Strength: <span id="stat-strength">10</span></div>
+                    <div class="stat-line">Agility: <span id="stat-agility">10</span></div>
+                    <div class="stat-line">Intelligence: <span id="stat-intelligence">10</span></div>
+                    <div class="stat-line">Vitality: <span id="stat-vitality">10</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crafting Screen -->
+    <div id="crafting-screen" class="screen">
+        <div class="crafting-header">
+            <h2>Forge</h2>
+            <button id="crafting-back-btn" class="back-btn">← Back to Hub</button>
+        </div>
+        
+        <div class="crafting-content">
+            <div class="recipe-list" id="recipe-list">
+                <!-- Crafting recipes will be displayed here -->
+            </div>
+            
+            <div class="crafting-materials">
+                <h3>Materials</h3>
+                <div id="materials-list">
+                    <!-- Available materials will be shown here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements (hidden) -->
+    <audio id="audio-background" loop></audio>
+    <audio id="audio-sfx"></audio>
+
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
