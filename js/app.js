@@ -471,8 +471,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     try {
         // Try to load the full modular version first
-        const { EchoesOfElaria } = await import('./app-modules.js').catch(() => null);
-        
+        const appModule = await import('./app-modules.js').catch(() => null);
+        const EchoesOfElaria = appModule ? appModule.EchoesOfElaria : null;
+
         if (EchoesOfElaria) {
             console.log('🎮 Loading full version with modules...');
             const game = new EchoesOfElaria();

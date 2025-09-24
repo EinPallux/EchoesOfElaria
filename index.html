@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- Loading Screen -->
     <div id="loading-screen" class="screen active">
         <div class="loading-content">
             <h1>Echoes of Elaria</h1>
@@ -16,7 +15,6 @@
         </div>
     </div>
 
-    <!-- Main Menu -->
     <div id="main-menu" class="screen">
         <div class="menu-content">
             <h1>Echoes of Elaria</h1>
@@ -35,7 +33,6 @@
         </div>
     </div>
 
-    <!-- Hub Screen -->
     <div id="hub-screen" class="screen">
         <div class="hub-header">
             <h2>Your Fortress</h2>
@@ -81,7 +78,6 @@
         </div>
     </div>
 
-    <!-- Character Creation Screen -->
     <div id="character-creation" class="screen">
         <div class="creation-header">
             <h2>Choose Your Path</h2>
@@ -155,9 +151,7 @@
         <button id="start-run-btn" class="menu-btn primary" disabled>Begin Adventure</button>
     </div>
 
-    <!-- Game Screen -->
     <div id="game-screen" class="screen">
-        <!-- Map View -->
         <div id="map-view" class="game-view active">
             <div class="map-header">
                 <div class="character-info">
@@ -171,11 +165,9 @@
             </div>
             
             <div class="map-container" id="map-container">
-                <!-- Map nodes will be generated here -->
-            </div>
+                </div>
         </div>
 
-        <!-- Combat View -->
         <div id="combat-view" class="game-view">
             <div class="combat-header">
                 <button id="combat-flee-btn" class="danger-btn">Flee</button>
@@ -212,16 +204,13 @@
             
             <div class="combat-actions">
                 <div class="skill-buttons" id="skill-buttons">
-                    <!-- Skill buttons will be generated here -->
-                </div>
+                    </div>
             </div>
             
             <div class="combat-log" id="combat-log">
-                <!-- Combat messages will appear here -->
-            </div>
+                </div>
         </div>
 
-        <!-- Event View -->
         <div id="event-view" class="game-view">
             <div class="event-content">
                 <h2 id="event-title">A Strange Encounter</h2>
@@ -230,12 +219,10 @@
                 </div>
                 <div class="event-image" id="event-image"></div>
                 <div class="event-choices" id="event-choices">
-                    <!-- Event choice buttons will appear here -->
-                </div>
+                    </div>
             </div>
         </div>
 
-        <!-- Inventory View -->
         <div id="inventory-view" class="game-view">
             <div class="inventory-header">
                 <h2>Inventory</h2>
@@ -244,8 +231,7 @@
             
             <div class="inventory-content">
                 <div class="inventory-grid" id="inventory-grid">
-                    <!-- Inventory items will be displayed here -->
-                </div>
+                    </div>
                 
                 <div class="character-stats">
                     <h3>Character Stats</h3>
@@ -258,7 +244,6 @@
         </div>
     </div>
 
-    <!-- Crafting Screen -->
     <div id="crafting-screen" class="screen">
         <div class="crafting-header">
             <h2>Forge</h2>
@@ -267,23 +252,19 @@
         
         <div class="crafting-content">
             <div class="recipe-list" id="recipe-list">
-                <!-- Crafting recipes will be displayed here -->
-            </div>
+                </div>
             
             <div class="crafting-materials">
                 <h3>Materials</h3>
                 <div id="materials-list">
-                    <!-- Available materials will be shown here -->
-                </div>
+                    </div>
             </div>
         </div>
     </div>
 
-    <!-- Audio elements (hidden) -->
     <audio id="audio-background" loop></audio>
     <audio id="audio-sfx"></audio>
 
-    <!-- Scripts -->
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
